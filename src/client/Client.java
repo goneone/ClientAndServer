@@ -9,7 +9,7 @@ public class Client {
 
 		try {
 
-			Socket c_socket = new Socket("localhost", 9998);
+			Socket c_socket = new Socket("localhost", 9997);
 
 			// 연결이 되면 데이터를 스트림형태로 받아와서 콘솔창에 출력
 			ReceiveThread receiveThread = new ReceiveThread();
@@ -20,8 +20,6 @@ public class Client {
 
 			sendThread.start();
 			receiveThread.start();
-
-			c_socket.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();

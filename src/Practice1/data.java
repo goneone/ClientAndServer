@@ -121,11 +121,13 @@ public class data {
 		dataTest.setGbCode("0001");
 		dataTest.setPhoneNumber("0103333111");
 		dataTest.setName("이웅");
+		
 
 		System.out.println(dataTest.checkedAge());
 		System.out.println(dataTest.checkedName().length());
 		System.out.println(dataTest.checkedPhoneNumber());
 		System.out.println(dataTest.serializeData());
+		System.out.println(dataTest.serializeData().getBytes().length);
 		System.out.println(dataTest.serializeData().getBytes().length);
 		
 		// 전문은 byte형식으로, 전문은 전부다 String으로 1억이면 000010000이런식으로 앞에는 0000으로 채워줌.

@@ -22,7 +22,7 @@ public class Server {
 			//즉, 클라이언트가 해당 포트에 연결 시도하면 accept 메소드는 대기를 풀고 클라이언트와 연결시키는 socket 클래스를 생성하여 반환한다.
 			//그래서 c_socket은 클라이언트와 1:1 연결된 소켓이다. 이 c_socekt으로 클라이언트랑 통신을 하게 됨.
 			Socket c_socket = s_socket.accept();
-			System.out.println("클라이언트 연결");
+			System.out.println(c_socket.getInetAddress()+"로 부터 연결요청이 들어옴");
 			
 			
 			ReceiveThread receiveThread = new ReceiveThread();

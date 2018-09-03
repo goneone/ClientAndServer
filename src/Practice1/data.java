@@ -128,7 +128,6 @@ public class data {
 		System.out.println(dataTest.checkedPhoneNumber());
 		System.out.println(dataTest.serializeData());
 		System.out.println(dataTest.serializeData().getBytes().length);
-		System.out.println(dataTest.serializeData().getBytes().length);
 		
 		// 전문은 byte형식으로, 전문은 전부다 String으로 1억이면 000010000이런식으로 앞에는 0000으로 채워줌.
 		// 숫자면 앞에 공백이거나 뒤에 공백, string.getBytes 하면 바이트형식으러감.

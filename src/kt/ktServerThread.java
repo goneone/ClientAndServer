@@ -1,15 +1,11 @@
-package server;
+package kt;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
-//수신 쓰레드 클라이언트가 서버한테 보낸거 받는 쓰레드.
-public class ReceiveThread extends Thread {
+public class ktServerThread extends Thread{
 
 	private Socket m_Socket;
 

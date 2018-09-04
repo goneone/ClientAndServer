@@ -21,7 +21,7 @@ public class SendThread extends Thread {
 		try {
 			//서버에 보낼 데이터 생성. 나중에 생성자 만들것~!
 			
-			String a ="it is Test";
+			String a ="전송성공했습니다 ";
 			String realdata = new String(a.getBytes());
 			
 			//보낼 데이터를  byte[] 배열로 생성하고 이것을 매개값으로 하여
@@ -29,12 +29,16 @@ public class SendThread extends Thread {
 			OutputStream os = m_Socket.getOutputStream();
 			byte[] byteArr = realdata.getBytes("euc-kr");
 			System.out.println("서버->클라이언트 데이터 전송");
+			//Thread.sleep(3000);
 			os.write(byteArr);
-			//os.flush();
+			os.flush();
 			//os.close();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		/*} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();*/
 		}
 	}
 	//메인으로부터 소켓 객체를 받기위한 메소드 

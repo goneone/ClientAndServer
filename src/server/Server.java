@@ -29,11 +29,11 @@ public class Server {
 			ReceiveThread receiveThread = new ReceiveThread();
 			receiveThread.setSocket(c_socket);
 
-			SendThread sendThread = new SendThread();
-			sendThread.setSocket(c_socket);
+			//SendThread sendThread = new SendThread();
+			//sendThread.setSocket(c_socket);
 
 			receiveThread.start();
-			sendThread.start();
+			//sendThread.start();
 			
 		} catch (IOException e) {
 			e.printStackTrace();

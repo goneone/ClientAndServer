@@ -3,6 +3,7 @@ package client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -15,27 +16,24 @@ public class SendThread extends Thread {
 		super.run();
 
 		try {
-
-			// 클라이언트 소켓의 인풋 스트림을 사용하기 편하게 변경하고 데이터를 받아옴.
-			BufferedReader tmpbuf = new BufferedReader(new InputStreamReader(System.in));
-
-			PrintWriter sendWriter = new PrintWriter(m_Socket.getOutputStream());
-
-			String sendString;
-
-			while (true) {
-				sendString = tmpbuf.readLine();
-
-				if (sendString.equals("exit")) {
-					break;
-				}
-				sendWriter.println(sendString);
-				sendWriter.flush();
-			}
-
-			sendWriter.close();
-			tmpbuf.close();
-			m_Socket.close();
+			//서버에 보낼 데이터 생성. 나중에 생성자 만들것~!
+			data dataTest = new data();
+			dataTest.setDataLength("0045"); //바이트길이 45
+			dataTest.setAge("55");
+			dataTest.setRrn("9102061231234");
+			dataTest.setGbCode("0001");
+			dataTest.setPhoneNumber("0103333111");
+			dataTest.setName("이웅");
+			String realdata= new String(dataTest.serializeData().getBytes());
+			
+			//보낼 데이터를  byte[] 배열로 생성하고 이것을 매개값으로 하여
+			//outputStream의 write()메서드를 호출.
+			OutputStream os = m_Socket.getOutputStream();
+			byte[] byteArr = realdata.getBytes("UTF-8");
+			System.out.println(byteArr);
+			os.write(byteArr);
+			os.flush();
+			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

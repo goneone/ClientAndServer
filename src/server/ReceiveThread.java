@@ -1,6 +1,7 @@
 package server;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -30,7 +31,7 @@ public class ReceiveThread extends Thread {
 			System.out.println(data);
 
 			
-			String a ="전송성공했습니다 ";
+			String a ="서버 : 클라이언트야 안녕";
 			String realdata = new String(a.getBytes());
 			
 			//보낼 데이터를  byte[] 배열로 생성하고 이것을 매개값으로 하여
@@ -41,7 +42,6 @@ public class ReceiveThread extends Thread {
 			Thread.sleep(3000);
 			os.write(byteArr1);
 			os.flush();
-			
 			is.close();
 			
 		} catch (IOException e) {

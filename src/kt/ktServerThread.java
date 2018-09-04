@@ -1,6 +1,7 @@
 package kt;
 
 import java.io.IOException;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -26,7 +27,7 @@ public class ktServerThread extends Thread{
 			System.out.println(data);
 
 			
-			String a ="전송성공했습니다 ";
+			String a ="서버 : 클라이언트야 안녕";
 			String realdata = new String(a.getBytes());
 			
 			//보낼 데이터를  byte[] 배열로 생성하고 이것을 매개값으로 하여
@@ -34,18 +35,13 @@ public class ktServerThread extends Thread{
 			OutputStream os = m_Socket.getOutputStream();
 			byte[] byteArr1 = realdata.getBytes("euc-kr");
 			System.out.println("서버->클라이언트 데이터 전송");
-			Thread.sleep(3000);
 			os.write(byteArr1);
-			os.flush();
-			
+			os.flush();		
 			is.close();
-			
+	
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public void setSocket(Socket _socket) {

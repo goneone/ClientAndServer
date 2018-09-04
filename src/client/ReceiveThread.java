@@ -23,7 +23,7 @@ public class ReceiveThread extends Thread {
 			//read메소드도 다시.. 아마 read메소드로 읽어서byteArr에 담는거 같음.
 			int readByteCount = is.read(byteArr);
 			//이부분에 대해서는 검색해볼것. 인자값4개는 뭘 넣어야하는건지.
-			String data = new String(byteArr, 0, readByteCount, "UTF-8");
+			String data = new String(byteArr, 0, readByteCount, "euc-kr");
 			System.out.println(data);
 
 			is.close();

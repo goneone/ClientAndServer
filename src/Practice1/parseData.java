@@ -4,19 +4,13 @@ public class parseData {
 	public static void main(String[] args) throws Exception {
 		String receiveData = "00450001이        055910206123123401033331111";
 	
-		String a = receiveData.substring(0, 4);
-		String b = receiveData.substring(4, 8);
-		String c = receiveData.substring(8, 16);
-		String d = receiveData.substring(0, 4);
-
-	
-		System.out.println(getString(receiveData, 0, 4));
-		System.out.println(getString(receiveData, 4, 4));
-		System.out.println(getString(receiveData, 8, 10));
-		System.out.println(getString(receiveData, 18, 3));
-		System.out.println(getString(receiveData, 21, 13));
-		System.out.println(getString(receiveData, 34, 11));
-		System.out.println(getString(receiveData, 0, 45));
+		System.out.println(getString(receiveData, 0, 4)); //바이트길이
+		System.out.println(getString(receiveData, 4, 4)); //구분코드
+		System.out.println(getString(receiveData, 8, 10));//이름
+		System.out.println(getString(receiveData, 18, 3));//나이
+		System.out.println(getString(receiveData, 21, 13));//주민등록번호
+		System.out.println(getString(receiveData, 34, 11));//핸드폰번호
+		System.out.println(getString(receiveData, 0, 45));//전체데이터 
 
 		
 	}

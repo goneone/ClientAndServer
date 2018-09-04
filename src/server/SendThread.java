@@ -20,25 +20,19 @@ public class SendThread extends Thread {
 
 		try {
 			//서버에 보낼 데이터 생성. 나중에 생성자 만들것~!
-			data dataTest = new data();
-			dataTest.setDataLength("0045"); //바이트길이 45
-			dataTest.setAge("55");
-			dataTest.setRrn("9102061231234");
-			dataTest.setGbCode("0001");
-			dataTest.setPhoneNumber("0103333111");
-			dataTest.setName("이웅");
-			String realdata= new String(dataTest.serializeData().getBytes());
-			String a = "it is Test";
-			String test = new String(a.getBytes());
+			
+			String a ="it is Test";
+			String realdata = new String(a.getBytes());
 			
 			//보낼 데이터를  byte[] 배열로 생성하고 이것을 매개값으로 하여
 			//outputStream의 write()메서드를 호출.
 			OutputStream os = m_Socket.getOutputStream();
-			byte[] byteArr = test.getBytes("UTF-8");
-			System.out.println(byteArr);
+			byte[] byteArr = realdata.getBytes("euc-kr");
+			System.out.println("서버->클라이언트 데이터 전송");
 			os.write(byteArr);
-			os.flush();
-			os.close();
+			//os.flush();
+			//os.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

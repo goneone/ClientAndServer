@@ -29,11 +29,13 @@ public class SendThread extends Thread {
 			//보낼 데이터를  byte[] 배열로 생성하고 이것을 매개값으로 하여
 			//outputStream의 write()메서드를 호출.
 			OutputStream os = m_Socket.getOutputStream();
-			byte[] byteArr = realdata.getBytes("UTF-8");
+			byte[] byteArr = realdata.getBytes("euc-kr");
 			System.out.println(byteArr);
 			os.write(byteArr);
 			os.flush();
 			os.close();
+			//
+			m_Socket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -12,6 +12,7 @@ public class Server {
 	public static void main(String[] args) {
 
 		try {
+			System.out.println("--서버구동---");
 			//서버소켓을 생성한다. 서버소켓 9997포트로 염
 			ServerSocket s_socket = new ServerSocket(9997);
 			//클라이언트 소켓 생성.

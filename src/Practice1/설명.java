@@ -9,6 +9,10 @@ public class 설명 {
 	서버,	receiveThread,sendThread 으로 처음에는 만듬
 	클라이언트의 센드쓰레드가 보내면 서버의 리시브 쓰레드가 받음. 
 	ktClient와 ktServer는 이름 지을게 없어서 지음
+	이거는 단일쓰레드임
+	
+	practiceClient와 practiceServer는 스레드없이 그냥임 
+	둘다 잘됨
 	*/
 	
 }

@@ -1,10 +1,9 @@
 package kt;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-
-import client.data;
 
 public class ktClientThread extends Thread {
 	private Socket m_Socket;
@@ -24,15 +23,26 @@ public class ktClientThread extends Thread {
 			dataTest.setName("이웅");
 			String realdata = new String(dataTest.serializeData().getBytes());
 
-			// 받을 데이터 
+			// 클라이언트가 보낼 데이터
 			// outputStream의 write()메서드를 호출.
 			OutputStream os = m_Socket.getOutputStream();
 			byte[] byteArr = realdata.getBytes("euc-kr");
-			System.out.println(byteArr);
+			System.out.println("데이터전송");
 			os.write(byteArr);
 			os.flush();
+
+			// 클라이언트가 받을 데이터
+			byte[] byteArr2 = new byte[100];
+			// 이것을 매개값으로 inputStream의 read메서드 호출
+			InputStream is = m_Socket.getInputStream();
+			// read메소드 - byteArr2의 길이만큼 데이터를 읽어서 byteArr에 저장하고 읽은 바이트 수를 반환한다.
+			int readByteCount = is.read(byteArr2);
+			String data2 = new String(byteArr2, 0, readByteCount, "euc-kr");
+			System.out.println(data2);
 			os.close();
-			m_Socket.close();
+			is.close();
+			// m_Socket.close();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

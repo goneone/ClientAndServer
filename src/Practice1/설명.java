@@ -15,4 +15,8 @@ public class 설명 {
 	둘다 잘됨
 	*/
 	
+	
+	//할일
+	//select, delete, update 추가
+	//db하나 만들기 kt 전용으로 
 }

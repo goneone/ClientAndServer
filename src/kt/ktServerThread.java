@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 
 public class ktServerThread extends Thread {
 
@@ -26,8 +27,28 @@ public class ktServerThread extends Thread {
 			System.out.println("!---------ReceiveThread--------!");
 			System.out.println(data);
 
+			//받은 데이터 자르는 부분
+			parseData parseData = new parseData();
+			String codeGB = parseData.getString(data, 4, 4);
 			
-			// 서버가 데이터 보내는 부분
+			if (codeGB == "0001") {
+				//조회
+				insertMethod insertMethod = new insertMethod();
+				insertMethod.insert();
+			} else if (codeGB == "0002") {
+				//삽입
+				insertMethod insertMethod = new insertMethod();
+				insertMethod.insert();
+			} else if (codeGB == "0003") {
+				//수정
+			} else if (codeGB == "0004") {
+				//삭제
+			} else {
+				
+			}
+			
+			
+			// 서버가 클라이언트에게 데이터 보내는 부분
 			String realdata = new String("hoho".getBytes());
 			// 보낼 데이터를 byte[] 배열로 생성하고 이것을 매개값으로 하여
 			// outputStream의 write()메서드를 호출.
@@ -38,8 +59,20 @@ public class ktServerThread extends Thread {
 			System.out.println(byteArr1);
 			os.flush();
 			is.close();
-
+			
+			
+			
+			
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

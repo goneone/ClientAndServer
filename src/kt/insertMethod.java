@@ -18,20 +18,22 @@ public class insertMethod {
 		try {
 
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3307/opentutorials?characterEncoding=UTF-8&serverTimezone=UTC", "root",
+					"jdbc:mysql://localhost:3307/kt?characterEncoding=UTF-8&serverTimezone=UTC", "root",
 					"root");
 			System.out.println("DB연결 성공!!");
 
 			// 3. 틀을 미리 생성해 놓고 값을 넣음.
-			pstmt = conn.prepareStatement("insert into author values(?,?,?)");
-			pstmt.setString(1, "109");
+			pstmt = conn.prepareStatement("insert into ktmember values(?,?,?,?,?)");
+			pstmt.setString(1, "1029");
 			pstmt.setString(2, "b");
 			pstmt.setString(3, "c");
+			pstmt.setString(4, "cd");
+			pstmt.setString(5, "cd");
 
 			// 4. 쿼리실행
 			pstmt.executeUpdate();
 			System.out.println("값입력완료");
-
+			/*
 			String sql;
 			sql = "SELECT * from author";
 			Statement stmt = null;
@@ -47,7 +49,7 @@ public class insertMethod {
 				System.out.println(rs.getString(2));
 				System.out.println(rs.getString(3));
 			}
-
+			*/
 		} finally {
 			if (pstmt != null)
 				try {

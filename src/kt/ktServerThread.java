@@ -30,8 +30,13 @@ public class ktServerThread extends Thread {
 			//받은 데이터 자르는 부분
 			parseData parseData = new parseData();
 			String codeGB = parseData.getString(data, 4, 4);
-			
-			if (codeGB == "0001") {
+			System.out.println(codeGB);
+			if (codeGB.equals("0002")) { //문자열비교는 equals!로 )
+				System.out.println("abcd");
+			} else {
+				System.out.println("달러..");
+			}
+		/*	if (codeGB == "0001") {
 				//조회
 				insertMethod insertMethod = new insertMethod();
 				insertMethod.insert();
@@ -45,7 +50,7 @@ public class ktServerThread extends Thread {
 				//삭제
 			} else {
 				
-			}
+			}*/
 			
 			
 			// 서버가 클라이언트에게 데이터 보내는 부분

@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class insertMethod {
 	//메인메소드 없고 그냥 메소드만 있는 select 테스트...
-	public void insert() throws ClassNotFoundException, SQLException {
+	public void insert(String name, String age, String rrn, String phoneNumber) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		// 1. JDBC 드라이버 로딩 - DB연결을 위해서.
@@ -24,11 +24,11 @@ public class insertMethod {
 
 			// 3. 틀을 미리 생성해 놓고 값을 넣음.
 			pstmt = conn.prepareStatement("insert into ktmember values(?,?,?,?,?)");
-			pstmt.setString(1, "1029");
-			pstmt.setString(2, "b");
-			pstmt.setString(3, "c");
+			pstmt.setString(1, "1031");
+			pstmt.setString(2, name);
+			pstmt.setString(3, phoneNumber);
 			pstmt.setString(4, "cd");
-			pstmt.setString(5, "cd");
+			pstmt.setString(5, rrn);
 
 			// 4. 쿼리실행
 			pstmt.executeUpdate();

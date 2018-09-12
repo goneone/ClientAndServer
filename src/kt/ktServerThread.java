@@ -29,29 +29,32 @@ public class ktServerThread extends Thread {
 
 			//받은 데이터 자르는 부분
 			parseData parseData = new parseData();
-			String codeGB = parseData.getString(data, 4, 4);
+			String codeGB 		= parseData.getString(data, 4, 4); //CRUD 구분코드
+			String name 		= parseData.getString(data, 8, 10);
+			String age 			= parseData.getString(data, 18, 3);
+			String rrn 			= parseData.getString(data, 21, 13);
+			String phoneNumber  = parseData.getString(data, 34, 11);
 			System.out.println(codeGB);
-			if (codeGB.equals("0002")) { //문자열비교는 equals!로 )
-				System.out.println("abcd");
-			} else {
-				System.out.println("달러..");
-			}
-		/*	if (codeGB == "0001") {
+			System.out.println(name);
+			System.out.println(age);
+			System.out.println(rrn);
+			System.out.println(phoneNumber);
+			
+			if (codeGB.equals("0001")) {
 				//조회
-				insertMethod insertMethod = new insertMethod();
-				insertMethod.insert();
-			} else if (codeGB == "0002") {
+				/*insertMethod insertMethod = new insertMethod();
+				insertMethod.insert(data);*/
+			} else if (codeGB.equals("0002")) {
 				//삽입
 				insertMethod insertMethod = new insertMethod();
-				insertMethod.insert();
-			} else if (codeGB == "0003") {
+				insertMethod.insert(name, age, rrn, phoneNumber);
+			} else if (codeGB.equals("0003")) {
 				//수정
-			} else if (codeGB == "0004") {
+			} else if (codeGB.equals("0004")) {
 				//삭제
 			} else {
 				
-			}*/
-			
+			}
 			
 			// 서버가 클라이언트에게 데이터 보내는 부분
 			String realdata = new String("hoho".getBytes());
@@ -64,9 +67,7 @@ public class ktServerThread extends Thread {
 			System.out.println(byteArr1);
 			os.flush();
 			is.close();
-			
-			
-			
+
 			
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -34,11 +34,6 @@ public class ktServerThread extends Thread {
 			String age 			= parseData.getString(data, 18, 3);
 			String rrn 			= parseData.getString(data, 21, 13);
 			String phoneNumber  = parseData.getString(data, 34, 11);
-			System.out.println(codeGB);
-			System.out.println(name);
-			System.out.println(age);
-			System.out.println(rrn);
-			System.out.println(phoneNumber);
 			
 			if (codeGB.equals("0001")) {
 				//조회
@@ -50,6 +45,8 @@ public class ktServerThread extends Thread {
 				insertMethod.insert(name, age, rrn, phoneNumber);
 			} else if (codeGB.equals("0003")) {
 				//수정
+				updateMethod updateMethod = new updateMethod();
+				updateMethod.update(name, age, rrn, phoneNumber);
 			} else if (codeGB.equals("0004")) {
 				//삭제
 			} else {

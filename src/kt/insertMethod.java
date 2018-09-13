@@ -23,12 +23,11 @@ public class insertMethod {
 			System.out.println("DB연결 성공!!");
 
 			// 3. 틀을 미리 생성해 놓고 값을 넣음.
-			pstmt = conn.prepareStatement("insert into ktmember values(?,?,?,?,?)");
-			pstmt.setString(1, "1031");
-			pstmt.setString(2, name);
+			pstmt = conn.prepareStatement("insert into ktmember(name, age, rrn, phoneNumber) values(?,?,?,?)");
+			pstmt.setString(1, name);
+			pstmt.setString(2, age);
 			pstmt.setString(3, phoneNumber);
-			pstmt.setString(4, "cd");
-			pstmt.setString(5, rrn);
+			pstmt.setString(4, rrn);
 
 			// 4. 쿼리실행
 			pstmt.executeUpdate();

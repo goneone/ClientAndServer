@@ -26,14 +26,23 @@ public class ktServerThread extends Thread {
 			String data = new String(byteArr, 0, readByteCount, "euc-kr");
 			System.out.println("!---------ReceiveThread--------!");
 			System.out.println(data);
-
+			
+			//받은 데이터 복호화 하는 부분
+			String key = "aes256-test-key!!";       // key는 16자 이상
+		    AES256Util aes256 = new AES256Util(key);
+		    String recdata = aes256.decrypt(data);
+		    System.out.println("복호화된 문자 : " + recdata);
+			
+			
+			
+			
 			//받은 데이터 자르는 부분
 			parseData parseData = new parseData();
-			String codeGB 		= parseData.getString(data, 4, 4); //CRUD 구분코드
-			String name 		= parseData.getString(data, 8, 10);
-			String age 			= parseData.getString(data, 18, 3);
-			String rrn 			= parseData.getString(data, 21, 13);
-			String phoneNumber  = parseData.getString(data, 34, 11);
+			String codeGB 		= parseData.getString(recdata, 4, 4); //CRUD 구분코드
+			String name 		= parseData.getString(recdata, 8, 10);
+			String age 			= parseData.getString(recdata, 18, 3);
+			String rrn 			= parseData.getString(recdata, 21, 13);
+			String phoneNumber  = parseData.getString(recdata, 34, 11);
 			
 			if (codeGB.equals("0001")) {
 				//조회
